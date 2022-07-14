@@ -20,6 +20,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         currentRegion.text = PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion;
 
+        Debug.Log(Data.count);
+        Debug.Log(currentLobby.text);
         switch (Data.count)
         {
             case 0:
@@ -34,9 +36,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
+    // 포톤 서버 접속 후 호출되는 콜백함수
+    // 로비 접속 여부 확인 가능
     public override void OnConnectedToMaster()
     {
-        // Ư�� �κ� �����Ͽ� ����
+        // 특정 로비를 생성하여 진입
         switch(Data.count)
         {
             case 0:
@@ -51,9 +55,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
+    // 로비 접속 후 호출되는 콜백함수    
     public override void OnJoinedLobby()
     {
-        // scene ����ȭ, �Ϲ� LoadLevel�� scene ����ȭ �Ұ���
-        PhotonNetwork.LoadLevel("Photon Lobby");
+        // PhotonNetwork.LoadLevel: scene 동기화
+        // 일반 LoadLevel은 scene 동기화 불가능
+        PhotonNetwork.LoadLevel("Photon Room");
     }
 }

@@ -15,7 +15,7 @@ public class PhotonSetting : MonoBehaviourPunCallbacks
 
     public void LoginSuccess(LoginResult result)
     {
-        // ¼±¾ğÇÏÁö ¾Ê¾Æµµ ÀÚµ¿À¸·Î false·Î ¼³Á¤µÅ ÀÖÀ½
+        // ì„ ì–¸í•˜ì§€ ì•Šì•„ë„ ìë™ìœ¼ë¡œ falseë¡œ ì„¤ì •ë¼ ìˆìŒ
         PhotonNetwork.AutomaticallySyncScene = false;
 
         PhotonNetwork.GameVersion = "1.0f";
@@ -24,23 +24,23 @@ public class PhotonSetting : MonoBehaviourPunCallbacks
 
         PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = region.text;
 
-        // scene ÀÌ¸§ÀÔ·Â
+        // scene ì´ë¦„ì…ë ¥
         PhotonNetwork.LoadLevel("Photon Lobby");
     }
 
     public void LoginFailure(PlayFabError error)
     {
-        Debug.Log("·Î±×ÀÎ ½ÇÆĞ");
+        Debug.Log("ë¡œê·¸ì¸ ì‹¤íŒ¨");
     }
     
     public void SignUpSuccess(RegisterPlayFabUserResult result)
     {
-        Debug.Log("È¸¿ø °¡ÀÔ ¼º°ø");
+        Debug.Log("íšŒì› ê°€ì… ì„±ê³µ");
     }
 
     public void SignUpFailure(PlayFabError error)
     {
-        Debug.Log("È¸¿ø °¡ÀÔ ½ÇÆĞ");
+        Debug.Log("íšŒì› ê°€ì… ì‹¤íŒ¨");
     }
 
     public void SignUp()
@@ -52,7 +52,7 @@ public class PhotonSetting : MonoBehaviourPunCallbacks
             Username = username.text
         };
 
-        // PlayFabClientAPI.RegisterPlayFabUser(È¸¿ø°¡ÀÔ¿¡ ´ëÇÑ Á¤º¸, È¸¿ø°¡ÀÔÀÌ ¼º°øÇßÀ» ¶§ÀÇ ÇÔ¼ö, È¸¿ø°¡ÀÔÀÌ ½ÇÆĞÇßÀ» ¶§ÀÇ ÇÔ¼ö)
+        // PlayFabClientAPI.RegisterPlayFabUser(íšŒì›ê°€ì…ì— ëŒ€í•œ ì •ë³´, íšŒì›ê°€ì…ì´ ì„±ê³µí–ˆì„ ë•Œì˜ í•¨ìˆ˜, íšŒì›ê°€ì…ì´ ì‹¤íŒ¨í–ˆì„ ë•Œì˜ í•¨ìˆ˜)
         PlayFabClientAPI.RegisterPlayFabUser(reguest, SignUpSuccess, SignUpFailure);
     }
 
@@ -64,7 +64,7 @@ public class PhotonSetting : MonoBehaviourPunCallbacks
             Password = passward.text,
         };
 
-        // PlayFabClientAPI.LoginWithEmailAddress(·Î±×ÀÎ¿¡ ´ëÇÑ Á¤º¸, ·Î±×ÀÎÀÌ ¼º°øÇßÀ» ¶§ÀÇ ÇÔ¼ö, ·Î±×ÀÎÀÌ ½ÇÆĞÇßÀ» ¶§ÀÇ ÇÔ¼ö)
+        // PlayFabClientAPI.LoginWithEmailAddress(ë¡œê·¸ì¸ì— ëŒ€í•œ ì •ë³´, ë¡œê·¸ì¸ì´ ì„±ê³µí–ˆì„ ë•Œì˜ í•¨ìˆ˜, ë¡œê·¸ì¸ì´ ì‹¤íŒ¨í–ˆì„ ë•Œì˜ í•¨ìˆ˜)
         PlayFabClientAPI.LoginWithEmailAddress(reguest, LoginSuccess, LoginFailure);
     }
 }
